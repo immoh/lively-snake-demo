@@ -15,9 +15,12 @@
 (defn move [[x y] [dx dy]]
   [(mod (+ x dx) cols) (mod (+ y dy) rows)])
 
-(defn move-snake [{:keys [snake direction] :as game-state}]
-  (assoc game-state :snake (cons (move (first snake) direction)
-                                 (butlast snake))))
+(defn move-snake [{:keys [snake direction apple] :as game-state}]
+  (let [new-head (move (first snake) direction)]
+    (if (= new-head apple)
+      (assoc game-state :snake (cons new-head snake)
+                        :apple nil)
+      (assoc game-state :snake (cons new-head (butlast snake))))))
 
 (defn add-apple [{:keys [apple] :as game-state}]
   (if apple
