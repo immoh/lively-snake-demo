@@ -5,7 +5,8 @@
                  [compojure "1.2.0"]
                  ;; ClojureScript
                  [org.clojure/clojurescript "0.0-2371"]
-                 [reagent "0.4.3"]]
+                 [reagent "0.4.3"]
+                 [lively "0.1.2"]]
   :source-paths ["src/clj"]
   :plugins [[lein-ring "0.8.13"]
             [lein-cljsbuild "1.0.3"]]

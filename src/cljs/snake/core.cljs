@@ -1,6 +1,10 @@
 (ns snake.core
   (:require [reagent.core :as reagent]
-            [snake.keyboard :as keyboard]))
+            [snake.keyboard :as keyboard]
+            [lively]))
+
+(lively/start "/js/snake.js"
+              {:on-reload (fn [] (.log js/console "Reload!"))})
 
 (def cols 25)
 (def rows 25)
