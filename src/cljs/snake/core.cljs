@@ -19,8 +19,10 @@
   (assoc game-state :snake (cons (move (first snake) direction)
                                  (butlast snake))))
 
-(defn add-apple [game-state]
-  (assoc game-state :apple [(rand-int cols) (rand-int rows)]))
+(defn add-apple [{:keys [apple] :as game-state}]
+  (if apple
+    game-state
+    (assoc game-state :apple [(rand-int cols) (rand-int rows)])))
 
 (defn update-state [game-state]
   (-> game-state
