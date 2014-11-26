@@ -27,10 +27,14 @@
     game-state
     (assoc game-state :apple [(rand-int cols) (rand-int rows)])))
 
+(defn update-running [{:keys [snake] :as game-state}]
+  (assoc game-state :running? (= (count (distinct snake)) (count snake))))
+
 (defn update-state [game-state]
   (-> game-state
       move-snake
-      add-apple))
+      add-apple
+      update-running))
 
 (defn game-loop []
   (swap! game-state update-state)
@@ -52,7 +56,7 @@
                  :text-transform "uppercase"}}
    [:h1 {:style {:font-size (* 2 unit-in-pixels)
                  :padding-top (* 2 unit-in-pixels)}}
-    "Lively Snake"]
+    (if (:snake @game-state) "Game Over" "Lively Snake")]
    [:a {:href "#"
         :style    {:font-size unit-in-pixels}
         :on-click (fn []
