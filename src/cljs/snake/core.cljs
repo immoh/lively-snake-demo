@@ -13,7 +13,7 @@
 (defonce game-state (reagent/atom {:running? false}))
 
 (defn move [[x y] [dx dy]]
-  [(+ x dx) (+ y dy)])
+  [(mod (+ x dx) cols) (mod (+ y dy) rows)])
 
 (defn move-snake [{:keys [snake direction] :as game-state}]
   (assoc game-state :snake (cons (move (first snake) direction)
