@@ -19,8 +19,13 @@
   (assoc game-state :snake (cons (move (first snake) direction)
                                  (butlast snake))))
 
+(defn add-apple [game-state]
+  (assoc game-state :apple [(rand-int cols) (rand-int rows)]))
+
 (defn update-state [game-state]
-  (move-snake game-state))
+  (-> game-state
+      move-snake
+      add-apple))
 
 (defn game-loop []
   (swap! game-state update-state)
@@ -78,7 +83,7 @@
                  :height (* rows unit-in-pixels)
                  :background-color "#ebebeb"}}
    (if (:running? @game-state)
-     [snake]
+     [:div [snake] [apple]]
      [start-screen])])
 
 (defn listen-to-arrow-keys []
