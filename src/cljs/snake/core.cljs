@@ -12,8 +12,15 @@
 
 (defonce game-state (reagent/atom {:running? false}))
 
+(defn move [[x y] [dx dy]]
+  [(+ x dx) (+ y dy)])
+
+(defn move-snake [{:keys [snake direction] :as game-state}]
+  (assoc game-state :snake (cons (move (first snake) direction)
+                                 (butlast snake))))
+
 (defn update-state [game-state]
-  game-state)
+  (move-snake game-state))
 
 (defn game-loop []
   (swap! game-state update-state)
