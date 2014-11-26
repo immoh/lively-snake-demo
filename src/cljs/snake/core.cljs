@@ -89,4 +89,6 @@
                                                                     :left  [-1 0]
                                                                     :right [1 0]})))))
 
+(defonce key-listener (listen-to-arrow-keys))
+
 (reagent/render-component [game] (.-body js/document))
