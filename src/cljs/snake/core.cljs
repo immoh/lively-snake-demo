@@ -35,7 +35,7 @@
                  :text-transform "uppercase"}}
    [:h1 {:style {:font-size (* 2 unit-in-pixels)
                  :padding-top (* 2 unit-in-pixels)}}
-    "Snake"]
+    "Lively Snake"]
    [:a {:href "#"
         :style    {:font-size unit-in-pixels}
         :on-click (fn []
