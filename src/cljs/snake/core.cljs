@@ -64,7 +64,7 @@
                    :top (* y unit-in-pixels)
                    :font-size unit-in-pixels
                    :color "green"}}
-     ""]))
+     "❤"]))
 
 (defn game []
   [:div {:style {:width (* cols unit-in-pixels)
